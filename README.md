@@ -137,7 +137,7 @@ L'agent de `merimee-rag` vérifie que chaque référence citée provient bien d'
 | Contrôle d'origine | fausse référence signalée | **non signalée (blanchie)** |
 | Contrôle strict (seuls les champs `ref` structurés comptent) | signalée | signalée |
 
-**Coût de la correction** : rejoué sur les 432 réponses d'agent enregistrées par `merimee-rag` (49 avec citations), le contrôle strict ne signale aucune citation supplémentaire (comptage approximatif pour 10 résultats d'outils tronqués à l'enregistrement). La correction tient en deux lignes dans `merimee-rag` (`agent.py`, propriété `seen_refs` : ne plus chercher de références dans les chaînes de texte).
+**Coût de la correction** : rejoué sur les 432 réponses d'agent enregistrées par `merimee-rag` (49 avec citations), le contrôle strict ne signale aucune citation supplémentaire (comptage approximatif pour 10 résultats d'outils tronqués à l'enregistrement). La correction a été appliquée dans `merimee-rag` ([commit 35acffe](https://github.com/ezechiel-sawadogo-nlp/merimee-rag/commit/35acffe)) : la propriété `seen_refs` ne cherche plus de références dans les chaînes de texte. Les 45 tests de `merimee-rag` passent.
 
 La démonstration porte sur le code du contrôle (`python src/rag_redteam/d3_check.py`, sans LLM) ; la fréquence à laquelle le LLM recopie une fausse référence lue dans une notice n'est pas mesurée.
 
